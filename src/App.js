@@ -4,7 +4,7 @@ import "./App.css";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
-  const [pokeData, setPokeData] = useState("");
+  const [pokeData, setPokeData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   function handleChange(e) {
@@ -21,29 +21,25 @@ function App() {
     const dataToJson = await getData.json();
     setPokeData(dataToJson);
     setInputValue("");
-    setIsLoading(false);
     console.log(dataToJson);
-
-    const getData2 = await fetch(
-      `https://pokeapi.co/api/v2/evolution-chain/${inputValue}`
-    );
-    const dataToJson2 = await getData2.json();
-    setPokeData(dataToJson2);
-    setInputValue("");
     setIsLoading(false);
-    console.log(dataToJson2);
   }
-  /*  if (isLoading) {
-    return (
-      <div>
-        <p>Pokecargando tu Pokémon...</p>
-      </div>
-    );
-  }*/
+
+  const dataFetched = (
+    <div>
+      <p>{pokeData.name}</p>
+      <p>{pokeData.id}</p>
+      <p>{pokeData.weight}</p>
+      <img src={pokeData.sprites?.front_default} />
+      <img src={pokeData.sprites?.front_shiny} />
+      <p> {pokeData.types?.[0]?.type.name.toUpperCase()}</p>
+    </div>
+  );
 
   return (
     <div className="App">
       <h1>QUE POKE QUERÉS?</h1>
+
       <form>
         <input
           type="text"
@@ -52,16 +48,12 @@ function App() {
           placeholder="Escribi el nombre..."
         />
       </form>
+
       <button onClick={submitTodoHandler} type="submit">
         Buscar
       </button>
-
-      <div>
-        <p>Numero de Pokedex {pokeData.id}</p>
-        <p>{pokeData.chain.evolves_to[0].species.name}</p>
-
-        <p>{pokeData.weight}</p>
-      </div>
+      {!isLoading && <div>{dataFetched}</div>}
+      {isLoading && <p>Pokecargando tu Pokémon... (isLoading en true)</p>}
     </div>
   );
 }
