@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./App.css";
 
@@ -13,6 +13,18 @@ function App() {
     setInputValue(value);
   }
 
+  useEffect(() => {
+    typeFetch();
+  }, [pokeData2]);
+
+  async function typeFetch() {
+    const getData2 = await fetch(`https://pokeapi.co/api/v2/type/${type}`);
+    const dataToJson2 = await getData2.json();
+    setPokeData2(dataToJson2);
+    setInputValue("");
+    console.log(dataToJson2);
+  }
+
   async function submitTodoHandler(e) {
     e.preventDefault();
 
@@ -24,18 +36,10 @@ function App() {
     setInputValue("");
     console.log(dataToJson);
     setIsLoading(false);
-
-    const getData2 = await fetch(
-      `https://pokeapi.co/api/v2/type/${inputValue}`
-    );
-    const dataToJson2 = await getData2.json();
-    setPokeData2(dataToJson2);
-    setInputValue("");
-    console.log(dataToJson2);
-    setIsLoading(false);
   }
 
-  const types = pokeData.types?.[0]?.type.name.toUpperCase();
+  const type = pokeData.types?.[0]?.type.name.toUpperCase();
+  const type2 = pokeData.types?.[1]?.type.name.toUpperCase();
   const sprite = pokeData.sprites?.front_default;
 
   const dataFetched = (
@@ -44,7 +48,8 @@ function App() {
       <p>{pokeData.id}</p>
       <p>{pokeData.weight}</p>
       <img src={sprite} />
-      <p>{types}</p>
+      <p>{type}</p>
+      <p>{type2}</p>
     </div>
   );
 
