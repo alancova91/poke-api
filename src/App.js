@@ -14,16 +14,17 @@ function App() {
   }
 
   useEffect(() => {
-    typeFetch();
-  }, [pokeData2]);
-
-  async function typeFetch() {
-    const getData2 = await fetch(`https://pokeapi.co/api/v2/type/${type}`);
-    const dataToJson2 = await getData2.json();
-    setPokeData2(dataToJson2);
-    setInputValue("");
-    console.log(dataToJson2);
-  }
+    if (pokeData.types?.length > 1) {
+      pokeData.types.map(async (item) => {
+        const getData2 = await fetch(
+          `https://pokeapi.co/api/v2/type/${item.type.name}`
+        );
+        const dataToJson = await getData2.json();
+        setPokeData2(dataToJson);
+      });
+    }
+    console.log(pokeData2);
+  }, [pokeData]);
 
   async function submitTodoHandler(e) {
     e.preventDefault();
@@ -38,18 +39,25 @@ function App() {
     setIsLoading(false);
   }
 
-  const type = pokeData.types?.[0]?.type.name.toUpperCase();
-  const type2 = pokeData.types?.[1]?.type.name.toUpperCase();
+  const mapeo = pokeData.types?.map((type) => {
+    return <p>{type.type.name}</p>;
+  });
+
   const sprite = pokeData.sprites?.front_default;
+  const effective = pokeData2.damage_relations?.double_damage_to?.map(
+    (damage) => {
+      return <p>{damage.name}</p>;
+    }
+  );
 
   const dataFetched = (
     <div>
       <p>{pokeData.name}</p>
       <p>{pokeData.id}</p>
-      <p>{pokeData.weight}</p>
       <img src={sprite} />
-      <p>{type}</p>
-      <p>{type2}</p>
+      {mapeo}
+
+      <p> Es Super Efectivo contra: {effective}</p>
     </div>
   );
 
@@ -62,7 +70,7 @@ function App() {
           type="text"
           value={inputValue}
           onChange={handleChange}
-          placeholder="Escribi el nombre..."
+          placeholder="Escribi el nombre o ID..."
         />
       </form>
 
@@ -70,8 +78,7 @@ function App() {
         Buscar
       </button>
       {!isLoading && <div>{dataFetched}</div>}
-      {isLoading && <p>Pokecargando tu Pokémon... (isLoading en true)</p>}
-      <p> {pokeData2.name?.damage_relations?.no_damage_to[0]?.name}</p>
+      {isLoading && ""}
     </div>
   );
 }

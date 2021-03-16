@@ -1,0 +1,12 @@
+      console.log(pokeData, 1);
+      const getData2 = await fetch(
+        `https://pokeapi.co/api/v2/type/${pokeData.types[0].type.name}`
+      );
+      const dataToJson = await getData2.json();
+      setPokeData2(dataToJson);
+    }
+
+    if (Object.keys(pokeData).length > 0) {
+      fetchType();
+    }
+  }, [pokeData]);
