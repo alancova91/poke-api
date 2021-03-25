@@ -1,0 +1,26 @@
+[
+  {
+    "name": "ice",
+    "debilidad": "fire",
+    "superefectivo": "",
+    "resistente": ""
+  },
+  {
+    "name": "fire",
+    "debilidad": "water",
+    "superefectivo": "",
+    "resistente": ""
+  },
+  {
+    "name": "water",
+    "debilidad": "electric",
+    "superefectivo": "",
+    "resistente": ""
+  },
+  {
+    "name": "electric",
+    "debilidad": "",
+    "superefectivo": "",
+    "resistente": ""
+  }
+]

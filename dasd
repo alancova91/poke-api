@@ -10,3 +10,22 @@
       fetchType();
     }
   }, [pokeData]);
+
+
+
+   if (pokeData.types?.length > 0) {
+      pokeData.types.map(async (item) => {
+        const getData2 = await fetch(
+          `https://pokeapi.co/api/v2/type/${item.type.name}`
+        );
+        const dataToJson = await getData2.json();
+        setPokeData2(dataToJson);
+      });
+    }
+    console.log(pokeData2);
+  }, [pokeData]);
+
+
+  
+filter((item) => item.title == "ARROW")
+    .map((item) => item.title);

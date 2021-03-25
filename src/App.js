@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import data from "./data/typesData.json";
 
 import "./App.css";
 
@@ -14,16 +15,20 @@ function App() {
   }
 
   useEffect(() => {
-    if (pokeData.types?.length > 1) {
-      pokeData.types.map(async (item) => {
+    if (pokeData.types?.length > 0) {
+      const types = pokeData.types.map(async (item) => {
         const getData2 = await fetch(
           `https://pokeapi.co/api/v2/type/${item.type.name}`
         );
         const dataToJson = await getData2.json();
-        setPokeData2(dataToJson);
+        return dataToJson;
+      });
+
+      Promise.all(types).then((data) => {
+        console.log(data, "esto resuelve la promesa");
+        setPokeData2(data);
       });
     }
-    console.log(pokeData2);
   }, [pokeData]);
 
   async function submitTodoHandler(e) {
@@ -51,22 +56,20 @@ function App() {
   );
 
   const dataFetched = (
-    <div>
-      <p>{pokeData.name}</p>
+    <>
+      <h2>{pokeData.name}</h2>
       <p>{pokeData.id}</p>
       <img src={sprite} />
       {mapeo}
-
-      <p> Es Super Efectivo contra: {effective}</p>
-    </div>
+    </>
   );
-
   return (
     <div className="App">
       <h1>QUE POKE QUERÉS?</h1>
 
       <form>
         <input
+          className="search-bar"
           type="text"
           value={inputValue}
           onChange={handleChange}
@@ -74,7 +77,11 @@ function App() {
         />
       </form>
 
-      <button onClick={submitTodoHandler} type="submit">
+      <button
+        className="search-button"
+        onClick={submitTodoHandler}
+        type="submit"
+      >
         Buscar
       </button>
       {!isLoading && <div>{dataFetched}</div>}
