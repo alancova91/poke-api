@@ -44,28 +44,61 @@ function App() {
     setIsLoading(false);
   }
 
-  const mapeo = pokeData.types?.map((type) => {
-    return <p>{type.type.name}</p>;
+  const pokeTypes = pokeData.types?.map((type) => {
+    return (
+      <p className="capitalized" key={type.name}>
+        {type.type.name}
+      </p>
+    );
   });
 
-  const sprite = pokeData.sprites?.front_default;
-  const effective = pokeData2.damage_relations?.double_damage_to?.map(
-    (damage) => {
-      return <p>{damage.name}</p>;
+  const pokeTypes2 = (
+    <>
+      <h2>Type:</h2> {pokeTypes}
+    </>
+  );
+
+  const weakness = pokeData2[0]?.damage_relations?.double_damage_from.map(
+    (item) => {
+      return <span className="weakness-style"> {item.name} </span>;
     }
   );
 
-  const dataFetched = (
+  const weakTo = (
     <>
-      <h2>{pokeData.name}</h2>
-      <p>{pokeData.id}</p>
-      <img src={sprite} />
-      {mapeo}
+      <h2>Weak to:</h2>
     </>
   );
+
+  const effectiveness = pokeData2[0]?.damage_relations?.double_damage_to.map(
+    (items) => {
+      return <span className="weakness-style"> {items.name} </span>;
+    }
+  );
+
+  const effectiveTo = (
+    <>
+      <h2>Effective to:</h2>
+    </>
+  );
+
+  const sprite = pokeData.sprites?.front_default;
+
+  const dataFetched = (
+    <>
+      <div id="" className="flex-name-sprite">
+        <h2>{pokeData.name}</h2> <img src={sprite} />
+      </div>
+      <h3>Pokedex N°: {pokeData.id}</h3>
+      {pokeTypes2}
+      {weakTo} <div className="flex-weakness">{weakness}</div>
+      {effectiveTo} <div className="flex-weakness">{effectiveness}</div>
+    </>
+  );
+
   return (
     <div className="App">
-      <h1>QUE POKE QUERÉS?</h1>
+      <h1 className="title">QUE POKE QUERÉS?</h1>
 
       <form>
         <input
@@ -84,8 +117,10 @@ function App() {
       >
         Buscar
       </button>
-      {!isLoading && <div>{dataFetched}</div>}
-      {isLoading && ""}
+      <div className="info-fetched">
+        {!isLoading && <div>{dataFetched}</div>}
+        {isLoading && ""}
+      </div>
     </div>
   );
 }
