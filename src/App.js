@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import data from "./data/typesData.json";
-
-import "./App.css";
+import "./App.scss";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
@@ -11,7 +9,8 @@ function App() {
 
   function handleChange(e) {
     const { value } = e.target;
-    setInputValue(value);
+    const toLowerCase = value.toLowerCase();
+    setInputValue(toLowerCase);
   }
 
   useEffect(() => {
@@ -44,61 +43,80 @@ function App() {
     setIsLoading(false);
   }
 
+  function handleEnter(keyCode) {
+    if (keyCode == 13) {
+      submitTodoHandler();
+    }
+  }
+
   const pokeTypes = pokeData.types?.map((type) => {
     return (
-      <p className="capitalized" key={type.name}>
+      <li className="pokeType" key={type.name}>
         {type.type.name}
-      </p>
+      </li>
     );
   });
 
   const pokeTypes2 = (
-    <>
-      <h2>Type:</h2> {pokeTypes}
-    </>
-  );
-
-  const weakness = pokeData2[0]?.damage_relations?.double_damage_from.map(
-    (item) => {
-      return <span className="weakness-style"> {item.name} </span>;
-    }
+    <div className="pokeTypeContainer">
+      <h2 className="Type">Type:</h2> {pokeTypes}
+    </div>
   );
 
   const weakTo = (
     <>
-      <h2>Weak to:</h2>
+      <h2 className="pokeInfo">Weak to:</h2>
     </>
+  );
+  const weakness = pokeData2[0]?.damage_relations?.double_damage_from.map(
+    (item) => {
+      return <li className="fetchdata-style"> {item.name} </li>;
+    }
   );
 
   const effectiveness = pokeData2[0]?.damage_relations?.double_damage_to.map(
     (items) => {
-      return <span className="weakness-style"> {items.name} </span>;
+      return <li className="fetchdata-style"> {items.name} </li>;
     }
   );
 
   const effectiveTo = (
     <>
-      <h2>Effective to:</h2>
+      <h2 className="pokeInfo">Effective to:</h2>
     </>
+  );
+
+  const effectiveness2 = pokeData2[1]?.damage_relations?.double_damage_to.map(
+    (items) => {
+      return <li className="fetchdata-style"> {items.name} </li>;
+    }
   );
 
   const sprite = pokeData.sprites?.front_default;
 
   const dataFetched = (
     <>
-      <div id="" className="flex-name-sprite">
-        <h2>{pokeData.name}</h2> <img src={sprite} />
-      </div>
-      <h3>Pokedex N°: {pokeData.id}</h3>
+      <img className="sprite" src={sprite} />{" "}
+      <h2 className="pokeName">{pokeData.name}</h2>
+      <h3 className="pokeNumber">Pokedex N°: {pokeData.id}</h3>
       {pokeTypes2}
-      {weakTo} <div className="flex-weakness">{weakness}</div>
-      {effectiveTo} <div className="flex-weakness">{effectiveness}</div>
+      <div className="a">
+        <div className="weakness">
+          {weakTo} {weakness}
+        </div>
+        <div className="effectiveness">
+          {effectiveTo} {effectiveness}
+          {effectiveness2}
+        </div>
+      </div>
     </>
   );
 
   return (
     <div className="App">
-      <h1 className="title">QUE POKE QUERÉS?</h1>
+      <a href="#" className="title">
+        <h1 className="title">FIND YOUR POKEMON</h1>
+      </a>
 
       <form>
         <input
@@ -107,19 +125,24 @@ function App() {
           value={inputValue}
           onChange={handleChange}
           placeholder="Escribi el nombre o ID..."
+          required
+          onKeyDown={handleEnter}
         />
+
+        <button
+          className="search-button"
+          onClick={submitTodoHandler}
+          type="submit"
+        >
+          Buscar
+        </button>
       </form>
 
-      <button
-        className="search-button"
-        onClick={submitTodoHandler}
-        type="submit"
-      >
-        Buscar
-      </button>
-      <div className="info-fetched">
-        {!isLoading && <div>{dataFetched}</div>}
-        {isLoading && ""}
+      <div className="info-container">
+        <div className="info-fetched">
+          {!isLoading && <div>{dataFetched}</div>}
+          {isLoading && ""}
+        </div>
       </div>
     </div>
   );

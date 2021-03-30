@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;500&display=swap");
+
+body {
+  background-color: rgb(65, 2, 73);
+  box-sizing: border-box;
+  font-family: "Baloo Paaji 2", cursive;
+  text-transform: uppercase;
+
+  .App {
+    width: 400px;
+    margin: 66px auto;
+    background-color: #222831;
+    border-radius: 15px;
+
+    .title {
+      text-align: center;
+      color: #fafafa;
+      text-decoration: none;
+      margin: 0px 0px;
+      padding: 20px 0;
+      font-size: 2rem;
+
+      &:hover {
+        color: #ffe593;
+      }
+    }
+
+    .search-bar {
+      width: 50%;
+      height: 25px;
+      margin: 0 95px;
+      font-size: 1rem;
+      outline: none;
+
+      &::placeholder {
+        text-align: center;
+        font-size: 0.9rem;
+      }
+    }
+
+    .search-button {
+      background-color: rgb(141, 8, 112);
+      border: none;
+      cursor: pointer;
+      line-height: 1.5;
+      font: 700 1.2rem "Roboto Slab", sans-serif;
+      padding: 0.75em 2em;
+      letter-spacing: 0.05rem;
+      margin: 1em 5em;
+      width: 13rem;
+      color: white;
+      border-radius: 15px;
+      outline: none;
+
+      &:hover {
+        color: #ffe593;
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+          0 17px 50px 0 rgba(252, 125, 21, 0.19);
+      }
+    }
+
+    .info-container {
+      background-color: #222831;
+      border-radius: 15px;
+
+      .info-fetched {
+        display: flex;
+        justify-content: center;
+
+        width: 90px;
+        margin: 0 auto;
+        text-align: left;
+      }
+
+      .sprite {
+        height: 160px;
+        width: 160px;
+        border-radius: 50%;
+        border: 5px solid #272133;
+        margin: 20px 0px 25px 0px;
+        box-shadow: 0 10px 50px rgba(235, 25, 110, 1);
+        outline: none;
+      }
+
+      .pokeName {
+        font-size: 2rem;
+        color: white;
+        margin-bottom: 10px;
+      }
+
+      .pokeNumber {
+        font-size: 1.2rem;
+        color: white;
+        margin-bottom: 20px;
+      }
+
+      .pokeTypeContainer {
+        margin: 10px 0;
+        .Type {
+          font-size: 1.4rem;
+          margin-bottom: 10px;
+          color: white;
+          text-align: left;
+        }
+        .pokeType {
+          color: white;
+          text-align: left;
+        }
+      }
+
+      .a {
+        color: white;
+
+        .weakness,
+        .effectiveness {
+          margin: 10px 0px 10px 0px;
+        }
+
+        .pokeInfo {
+          font-size: 2rem;
+          margin-bottom: 10px;
+          text-align: left;
+        }
+
+        .fetchdata-style {
+          color: #fafafa;
+          font-size: 1rem;
+          text-align: left;
+        }
+
+        &:last-of-type {
+          padding-bottom: 10px;
+        }
+      }
+    }
+  }
+}
