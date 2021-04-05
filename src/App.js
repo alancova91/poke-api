@@ -9,8 +9,8 @@ function App() {
 
   function handleChange(e) {
     const { value } = e.target;
-    const toLowerCase = value.toLowerCase();
-    setInputValue(toLowerCase);
+
+    setInputValue(value);
   }
 
   useEffect(() => {
@@ -34,7 +34,7 @@ function App() {
     e.preventDefault();
 
     const getData = await fetch(
-      `https://pokeapi.co/api/v2/pokemon/${inputValue}`
+      `https://pokeapi.co/api/v2/pokemon/${inputValue.toLowerCase()}`
     );
     const dataToJson = await getData.json();
     setPokeData(dataToJson);
@@ -74,8 +74,15 @@ function App() {
     }
   );
 
+  const weakness2 = pokeData2[1]?.damage_relations?.double_damage_from.map(
+    (item) => {
+      return <li className="fetchdata-style"> {item.name} </li>;
+    }
+  );
+
   const effectiveness = pokeData2[0]?.damage_relations?.double_damage_to.map(
     (items) => {
+      console.log(items.name);
       return <li className="fetchdata-style"> {items.name} </li>;
     }
   );
@@ -102,7 +109,7 @@ function App() {
       {pokeTypes2}
       <div className="a">
         <div className="weakness">
-          {weakTo} {weakness}
+          {weakTo} {weakness} {weakness2}
         </div>
         <div className="effectiveness">
           {effectiveTo} {effectiveness}
