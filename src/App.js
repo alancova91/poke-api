@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Input from "./Components/Input";
+import Button from "./Components/Button";
 import "./App.scss";
 
 function App() {
@@ -7,9 +9,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [pokeData2, setPokeData2] = useState({});
 
-  function handleChange(e) {
-    const { value } = e.target;
-
+  function handleCallback(value) {
     setInputValue(value);
   }
 
@@ -30,22 +30,22 @@ function App() {
     }
   }, [pokeData]);
 
-  async function submitTodoHandler(e) {
-    e.preventDefault();
-
-    const getData = await fetch(
-      `https://pokeapi.co/api/v2/pokemon/${inputValue.toLowerCase()}`
-    );
-    const dataToJson = await getData.json();
-    setPokeData(dataToJson);
-    setInputValue("");
-    console.log(dataToJson);
-    setIsLoading(false);
+  async function submitPoke() {
+    if (inputValue != "") {
+      const getData = await fetch(
+        `https://pokeapi.co/api/v2/pokemon/${inputValue.toLowerCase()}`
+      );
+      const dataToJson = await getData.json();
+      setPokeData(dataToJson);
+      setInputValue("");
+      console.log(dataToJson);
+      setIsLoading(false);
+    }
   }
 
   function handleEnter(keyCode) {
     if (keyCode == 13) {
-      submitTodoHandler();
+      submitPoke();
     }
   }
 
@@ -80,17 +80,16 @@ function App() {
     }
   );
 
-  const effectiveness = pokeData2[0]?.damage_relations?.double_damage_to.map(
-    (items) => {
-      console.log(items.name);
-      return <li className="fetchdata-style"> {items.name} </li>;
-    }
-  );
-
   const effectiveTo = (
     <>
       <h2 className="pokeInfo">Effective to:</h2>
     </>
+  );
+
+  const effectiveness = pokeData2[0]?.damage_relations?.double_damage_to.map(
+    (items) => {
+      return <li className="fetchdata-style"> {items.name} </li>;
+    }
   );
 
   const effectiveness2 = pokeData2[1]?.damage_relations?.double_damage_to.map(
@@ -125,24 +124,14 @@ function App() {
         <h1 className="title">FIND YOUR POKEMON</h1>
       </a>
 
-      <form>
-        <input
-          className="search-bar"
-          type="text"
+      <form className="form-style">
+        <Input
           value={inputValue}
-          onChange={handleChange}
-          placeholder="Escribi el nombre o ID..."
-          required
+          onChange={handleCallback}
           onKeyDown={handleEnter}
         />
 
-        <button
-          className="search-button"
-          onClick={submitTodoHandler}
-          type="submit"
-        >
-          Buscar
-        </button>
+        <Button onClick={submitPoke} />
       </form>
 
       <div className="info-container">

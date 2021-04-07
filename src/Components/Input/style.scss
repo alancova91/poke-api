@@ -1,0 +1,12 @@
+.search-bar {
+  width: 50%;
+  height: 25px;
+  margin: 0 95px;
+  font-size: 0.9rem;
+  outline: none;
+
+  &::placeholder {
+    text-align: center;
+    font-size: 0.9rem;
+  }
+}

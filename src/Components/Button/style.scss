@@ -1,0 +1,20 @@
+.search-button {
+  background-color: rgb(141, 8, 112);
+  border: none;
+  cursor: pointer;
+  line-height: 1.5;
+  font: 700 1.2rem "Roboto Slab", sans-serif;
+  padding: 0.75em 2em;
+  letter-spacing: 0.05rem;
+  margin: 1em 6.2em;
+  width: 10rem;
+  color: white;
+  border-radius: 15px;
+  outline: none;
+
+  &:hover {
+    color: #ffe593;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+      0 17px 50px 0 rgba(252, 125, 21, 0.19);
+  }
+}

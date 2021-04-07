@@ -29,3 +29,25 @@
   
 filter((item) => item.title == "ARROW")
     .map((item) => item.title);
+
+
+
+    media queries
+
+    body .App .info-container {
+    background-color: #222831;
+    border-radius: 15px;
+    height: 82vh;
+}
+
+
+body .App .info-container .sprite {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 5px solid #272133;
+    margin: 2px 20px;
+    box-shadow: 0 5px 25px #eb196e;
+    outline: none;
+
+    
