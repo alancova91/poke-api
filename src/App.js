@@ -44,7 +44,7 @@ function App() {
   }
 
   function handleEnter(keyCode) {
-    if (keyCode == 13) {
+    if (keyCode === 13) {
       submitPoke();
     }
   }

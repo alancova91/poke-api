@@ -1,7 +1,8 @@
 import "./style.scss";
 
 function Button(props) {
-  function handleClick() {
+  function handleClick(e) {
+    e.preventDefault();
     props.onClick();
   }
   return (
