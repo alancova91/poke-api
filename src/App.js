@@ -70,13 +70,13 @@ function App() {
   );
   const weakness = pokeData2[0]?.damage_relations?.double_damage_from.map(
     (item) => {
-      return <li className="fetchdata-style"> {item.name} </li>;
+      return <span className="fetchdata-style"> - {item.name} </span>;
     }
   );
 
   const weakness2 = pokeData2[1]?.damage_relations?.double_damage_from.map(
     (item) => {
-      return <li className="fetchdata-style"> {item.name} </li>;
+      return <span className="fetchdata-style"> - {item.name} </span>;
     }
   );
 
@@ -88,13 +88,13 @@ function App() {
 
   const effectiveness = pokeData2[0]?.damage_relations?.double_damage_to.map(
     (items) => {
-      return <li className="fetchdata-style"> {items.name} </li>;
+      return <span className="fetchdata-style"> - {items.name} </span>;
     }
   );
 
   const effectiveness2 = pokeData2[1]?.damage_relations?.double_damage_to.map(
     (items) => {
-      return <li className="fetchdata-style"> {items.name} </li>;
+      return <span className="fetchdata-style"> - {items.name} </span>;
     }
   );
 
@@ -112,27 +112,39 @@ function App() {
         </div>
         <div className="effectiveness">
           {effectiveTo} {effectiveness}
-          {effectiveness2}
+          {effectiveness2}{" "}
         </div>
+      </div>
+      <div className="button-container">
+        <a src="#" className="close-button" onClick={refresh}>
+          Close
+        </a>
       </div>
     </>
   );
 
+  function refresh(e) {
+    e.preventDefault();
+    window.location.reload(false);
+  }
+
   return (
     <div className="App">
-      <a href="#" className="title">
-        <h1 className="title">FIND YOUR POKEMON</h1>
-      </a>
+      <div>
+        <a href="#" className="title">
+          <h1 className="title">FIND YOUR POKEMON</h1>
+        </a>
 
-      <form className="form-style">
-        <Input
-          value={inputValue}
-          onChange={handleCallback}
-          onKeyDown={handleEnter}
-        />
+        <form className="form-style">
+          <Input
+            value={inputValue}
+            onChange={handleCallback}
+            onKeyDown={handleEnter}
+          />
 
-        <Button onClick={submitPoke} />
-      </form>
+          <Button onClick={submitPoke} />
+        </form>
+      </div>
 
       <div className="info-container">
         <div className="info-fetched">
