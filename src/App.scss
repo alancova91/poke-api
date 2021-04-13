@@ -6,23 +6,33 @@ body {
   font-family: "Baloo Paaji 2", cursive;
   text-transform: uppercase;
 
-  .App {
+  .content-container {
     width: 400px;
     margin: 15px auto;
     background-color: #222831;
     border-radius: 15px;
-    max-height: 97vh;
 
-    .title {
-      text-align: center;
-      color: #fafafa;
-      text-decoration: none;
-      margin: 0px 0px;
-      padding: 20px 0;
-      font-size: 2rem;
+    @media (max-width: 320px) {
+      width: 300px;
+      margin: 15px 10px;
+    }
 
-      &:hover {
-        color: #ffe593;
+    .search-bar-container {
+      .title {
+        text-align: center;
+        color: #fafafa;
+        text-decoration: none;
+        margin: 0px 0px;
+        padding: 20px 0;
+        font-size: 2rem;
+
+        @media (min-width: 320px) {
+          font-size: 1.7rem;
+        }
+
+        &:hover {
+          color: #ffe593;
+        }
       }
     }
 
@@ -53,12 +63,21 @@ body {
           color: white;
           margin-bottom: 10px;
           text-align: center;
+
+          @media (max-width: 320px) {
+            font-size: 1.5rem;
+          }
         }
 
         .pokeNumber {
           font-size: 1.2rem;
           color: white;
           margin-bottom: 20px;
+          text-align: center;
+
+          @media (max-width: 320px) {
+            font-size: 1.1rem;
+          }
         }
 
         .pokeTypeContainer {
@@ -68,6 +87,10 @@ body {
             margin-bottom: 10px;
             color: white;
             text-align: left;
+
+            @media (max-width: 320px) {
+              font-size: 1.5rem;
+            }
           }
           .pokeType {
             color: white;

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./reset.css";
 import Input from "./Components/Input";
 import Button from "./Components/Button";
 import "./App.scss";
@@ -129,9 +130,9 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <div>
-        <a href="#" className="title">
+    <div className="content-container">
+      <div className="search-bar-container">
+        <a onClick={refresh} href="#" className="title">
           <h1 className="title">FIND YOUR POKEMON</h1>
         </a>
 
