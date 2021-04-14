@@ -1,17 +1,12 @@
 .search-bar {
-  width: 50%;
-  height: 25px;
-  margin: 0 95px;
-  font-size: 0.9rem;
+  margin-bottom: 15px;
+  width: 65%; /*chequear esto*/
   outline: none;
-
-  @media (max-width: 320px) {
-    width: 75%;
-    margin: 0 36px;
-  }
+  height: 25px;
+  border-radius: 7px;
 
   &::placeholder {
     text-align: center;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
   }
 }

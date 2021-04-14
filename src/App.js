@@ -60,7 +60,7 @@ function App() {
 
   const pokeTypes2 = (
     <div className="pokeTypeContainer">
-      <h2 className="Type">Type:</h2> {pokeTypes}
+      <h2 className="type">Type: </h2> {pokeTypes}
     </div>
   );
 
@@ -71,13 +71,13 @@ function App() {
   );
   const weakness = pokeData2[0]?.damage_relations?.double_damage_from.map(
     (item) => {
-      return <span className="fetchdata-style"> - {item.name} </span>;
+      return <li className="fetchdata-style"> {item.name} </li>;
     }
   );
 
   const weakness2 = pokeData2[1]?.damage_relations?.double_damage_from.map(
     (item) => {
-      return <span className="fetchdata-style"> - {item.name} </span>;
+      return <li className="fetchdata-style"> {item.name} </li>;
     }
   );
 
@@ -87,15 +87,19 @@ function App() {
     </>
   );
 
-  const effectiveness = pokeData2[0]?.damage_relations?.double_damage_to.map(
+  const effective = pokeData2[0]?.damage_relations?.double_damage_to.map(
     (items) => {
-      return <span className="fetchdata-style"> - {items.name} </span>;
+      return <li className="fetchdata-style"> {items.name} </li>;
     }
   );
 
-  const effectiveness2 = pokeData2[1]?.damage_relations?.double_damage_to.map(
+  const effective2 = pokeData2[1]?.damage_relations?.double_damage_to.map(
     (items) => {
-      return <span className="fetchdata-style"> - {items.name} </span>;
+      return (
+        <>
+          <li className="fetchdata-style"> {items.name} </li>
+        </>
+      );
     }
   );
 
@@ -105,15 +109,14 @@ function App() {
     <>
       <img className="sprite" src={sprite} />{" "}
       <h2 className="pokeName">{pokeData.name}</h2>
-      <h3 className="pokeNumber">Pokedex N°: {pokeData.id}</h3>
+      <h3 className="pokeId">Pokedex N°: {pokeData.id}</h3>
       {pokeTypes2}
-      <div className="a">
+      <div className="we-container">
+        <div className="effectiveness">
+          {effectiveTo} {effective} {effective2}
+        </div>
         <div className="weakness">
           {weakTo} {weakness} {weakness2}
-        </div>
-        <div className="effectiveness">
-          {effectiveTo} {effectiveness}
-          {effectiveness2}{" "}
         </div>
       </div>
       <div className="button-container">
@@ -132,26 +135,22 @@ function App() {
   return (
     <div className="content-container">
       <div className="search-bar-container">
-        <a onClick={refresh} href="#" className="title">
-          <h1 className="title">FIND YOUR POKEMON</h1>
-        </a>
-
+        <h1 onClick={refresh} className="title">
+          FIND YOUR POKEMON
+        </h1>
         <form className="form-style">
           <Input
             value={inputValue}
             onChange={handleCallback}
             onKeyDown={handleEnter}
           />
-
           <Button onClick={submitPoke} />
         </form>
       </div>
 
-      <div className="info-container">
-        <div className="info-fetched">
-          {!isLoading && <div>{dataFetched}</div>}
-          {isLoading && ""}
-        </div>
+      <div className="info-fetched">
+        {!isLoading && <div className="dataFetched">{dataFetched}</div>}
+        {isLoading && ""}
       </div>
     </div>
   );

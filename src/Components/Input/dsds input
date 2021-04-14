@@ -1,0 +1,17 @@
+.search-bar {
+  width: 50%;
+  height: 25px;
+  margin: 0 95px;
+  font-size: 0.9rem;
+  outline: none;
+
+  @media (max-width: 320px) {
+    width: 75%;
+    margin: 0 36px;
+  }
+
+  &::placeholder {
+    text-align: center;
+    font-size: 0.9rem;
+  }
+}
