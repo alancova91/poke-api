@@ -5,8 +5,27 @@
   height: 25px;
   border-radius: 7px;
 
+  @media (min-width: 769px) and (max-width: 1024px) {
+    min-width: 275px;
+    width: 50%;
+  }
+
   &::placeholder {
     text-align: center;
     font-size: 0.7rem;
+    @media (min-width: 321px) and (max-width: 375px) {
+      font-size: 0.8rem;
+    }
+    @media (min-width: 376px) and (max-width: 425px) {
+      font-size: 0.9rem;
+    }
+
+    @media (min-width: 426px) and (max-width: 768px) {
+      font-size: 0.95rem;
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      font-size: 0.95rem;
+    }
   }
 }

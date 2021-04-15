@@ -6,17 +6,42 @@
 
 body {
   background-color: rgb(65, 2, 73);
-  font-family: "Baloo Paaji 2", cursive;
+  font-family: -apple-system, "Baloo Paaji 2", cursive;
   text-transform: uppercase;
+
   .content-container {
     max-width: 320px;
-    width: 85%;
     margin: 15px 25px 15px;
     background-color: #222831;
     display: flex;
     flex-direction: column;
-    height: 145px;
+    height: 156px; /*156px para que entre en menos de 320? 145px como estaba antes*/
     border-radius: 0px;
+
+    @media (min-width: 321px) and (max-width: 375px) {
+      max-width: 375px;
+      margin: 15px 27px 15px;
+    }
+
+    @media (min-width: 376px) and (max-width: 425px) {
+      max-width: 425px;
+      margin: 15px 35px 15px;
+    }
+
+    @media (min-width: 426px) and (max-width: 768px) {
+      max-width: 426px;
+      width: 75%;
+      margin: 15px auto;
+    }
+
+    @media (min-width: 769px) and (max-width: 1399px) {
+      max-width: 769px;
+      width: 50%;
+      margin: 15px auto;
+    }
+
+    @media (min-width: 1440px) {
+    }
 
     .search-bar-container {
       display: flex;
@@ -29,6 +54,22 @@ body {
         font-size: 1.7rem;
         cursor: pointer;
         margin: 15px 0px;
+
+        @media (min-width: 321px) and (max-width: 375px) {
+          font-size: 1.7rem;
+        }
+
+        @media (min-width: 376px) and (max-width: 425px) {
+          font-size: 1.8rem;
+        }
+
+        @media (min-width: 426px) and (max-width: 768px) {
+          font-size: 2rem;
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+          font-size: 2.2rem;
+        }
 
         &:hover {
           color: #ffe593;
@@ -59,51 +100,164 @@ body {
           margin: 15px 0px;
           box-shadow: 0 10px 50px rgba(235, 25, 110, 1);
           outline: none;
+          @media (min-width: 321px) and (max-width: 375px) {
+            margin-bottom: 20px;
+          }
+          @media (min-width: 376px) and (max-width: 425px) {
+            margin-bottom: 25px;
+          }
+          @media (min-width: 426px) and (max-width: 768px) {
+            margin-bottom: 20px;
+            height: 125px;
+            width: 125px;
+          }
+          @media (min-width: 769px) and (max-width: 1024px) {
+            margin-bottom: 20px;
+            height: 140px;
+            width: 140px;
+          }
         }
 
         .pokeName {
           font-size: 1.5rem;
           margin-bottom: 5px;
+
+          @media (min-width: 321px) and (max-width: 375px) {
+            font-size: 1.7rem;
+            margin-bottom: 10px;
+          }
+          @media (min-width: 376px) and (max-width: 425px) {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+          }
+          @media (min-width: 426px) and (max-width: 768px) {
+            font-size: 1.9rem;
+            margin-bottom: 10px;
+          }
+          @media (min-width: 769px) and (max-width: 1024px) {
+            font-size: 2rem;
+          }
         }
 
         .pokeId {
           font-size: 1rem;
           margin-bottom: 10px;
+          @media (min-width: 321px) and (max-width: 375px) {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+          }
+          @media (min-width: 376px) and (max-width: 768px) {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+          }
+          @media (min-width: 426px) and (max-width: 768px) {
+            font-size: 1.25rem;
+            margin-bottom: 25px;
+          }
+          @media (min-width: 769px) and (max-width: 1024px) {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+          }
         }
 
         .pokeTypeContainer {
           margin-bottom: 10px;
+          @media (min-width: 321px) and (max-width: 768px) {
+            margin-bottom: 20px;
+          }
+          @media (min-width: 769px) and (max-width: 1024px) {
+            margin-bottom: 20px;
+          }
 
           .type {
             text-align: center;
             font-size: 1.2rem;
             text-decoration: underline;
             margin-bottom: 5px;
+            @media (min-width: 321px) and (max-width: 375px) {
+              font-size: 1.3rem;
+              margin-bottom: 10px;
+            }
+
+            @media (min-width: 376px) and (max-width: 768px) {
+              font-size: 1.4rem;
+              margin-bottom: 10px;
+            }
+            @media (min-width: 769px) and (max-width: 1024px) {
+              font-size: 1.5rem;
+              margin-bottom: 10px;
+            }
           }
           .pokeType {
             font-size: 0.9rem;
             display: flex;
-
             justify-content: center;
+            @media (min-width: 321px) and (max-width: 425px) {
+              font-size: 1rem;
+            }
+
+            @media (min-width: 426px) and (max-width: 768px) {
+              font-size: 1.1rem;
+            }
+            @media (min-width: 769px) and (max-width: 1024px) {
+              font-size: 1.2rem;
+            }
           }
         }
 
         .we-container {
           width: 200px;
+
           .weakness,
           .effectiveness {
             text-align: center;
             margin-bottom: 5px;
+            @media (min-width: 321px) and (max-width: 375px) {
+              margin-bottom: 20px;
+            }
+            @media (min-width: 376px) and (max-width: 425px) {
+              margin-bottom: 20px;
+            }
+
+            @media (min-width: 426px) and (max-width: 768px) {
+              margin-bottom: 30px;
+            }
+            @media (min-width: 769px) and (max-width: 1024px) {
+              margin-bottom: 20px;
+            }
+
             .pokeInfo {
               text-align: center;
               font-size: 1.2rem;
               text-decoration: underline;
               margin-bottom: 5px;
+
+              @media (min-width: 426px) and (max-width: 768px) {
+                font-size: 1.4rem;
+                margin-bottom: 10px;
+              }
+              @media (min-width: 769px) and (max-width: 1024px) {
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+              }
             }
             .fetchdata-style {
               text-align: center;
               display: inline;
               font-size: 0.9rem;
+              @media (min-width: 321px) and (max-width: 375px) {
+                font-size: 1rem;
+              }
+              @media (min-width: 376px) and (max-width: 425px) {
+                font-size: 1rem;
+              }
+
+              @media (min-width: 426px) and (max-width: 768px) {
+                font-size: 1.1rem;
+              }
+              @media (min-width: 769px) and (max-width: 1024px) {
+                font-size: 1.1rem;
+              }
             }
           }
         }
@@ -115,9 +269,18 @@ body {
             color: white;
             font-size: 0.8rem;
             cursor: pointer;
-            text-decoration: underline;
+
+            @media (min-width: 376px) and (max-width: 425px) {
+              font-size: 0.9rem;
+            }
+
+            @media (min-width: 426px) and (max-width: 768px) {
+              font-size: 1rem;
+            }
+
             &:hover {
               color: red;
+              text-decoration: underline;
             }
           }
         }

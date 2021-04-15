@@ -12,6 +12,10 @@
   outline: none;
   text-transform: uppercase;
 
+  @media (min-width: 426px) and (max-width: 768px) {
+    padding: 9px 7px;
+  }
+
   &:hover {
     color: #ffe593;
     box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
