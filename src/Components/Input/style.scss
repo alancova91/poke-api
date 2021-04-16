@@ -8,7 +8,12 @@
 
   @media (min-width: 769px) and (max-width: 1024px) {
     min-width: 275px;
-    width: 50%;
+    width: 35%;
+  }
+  @media (min-width: 1025px) and (max-width: 1980px) {
+    min-width: 300px;
+    width: 35%;
+    height: 30px;
   }
 
   &::placeholder {
@@ -27,6 +32,9 @@
 
     @media (min-width: 769px) and (max-width: 1024px) {
       font-size: 0.95rem;
+    }
+    @media (min-width: 1025px) and (max-width: 1980px) {
+      font-size: 1rem;
     }
   }
 }

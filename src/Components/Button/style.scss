@@ -12,8 +12,9 @@
   outline: none;
   text-transform: uppercase;
 
-  @media (min-width: 426px) and (max-width: 768px) {
+  @media (min-width: 426px) and (max-width: 1920px) {
     padding: 9px 7px;
+    margin-bottom: 10px;
   }
 
   &:hover {
